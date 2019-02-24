@@ -68,7 +68,7 @@
 
 但這樣有個缺點是刪除及修改的**歷史記錄**也都要儲存到server，隨著時間拉長同步次數累積愈多，即使Record的資料不多，但server卻留著許多的歷史記錄。
 
-![MyPhrase_data_sync](\imgs\MyPhrase_data_sync.jpg)
+![MyPhrase_data_sync](/imgs/MyPhrase_data_sync.jpg)
 
 因此為了省儲存在server的資料量，做了一點折衷是，將前面累積一定數量的歷史記錄都往前刪除，並留下Snapshot，如果client要同步時，之前記錄的時間是比server的Snapshot時間還要早，因為Client2距離上次更新的時段，在server上的歷史記錄已經不完整，因此就選擇直接下載全部的Record資料做同步，如上圖的下半部所示，Client2在右邊的藍線一開始要做同步時，只能下載全部的Record資料；但Client1的在右邊的綠線一開始要做同步時，只要更新2,3號Record的歷史資料。
 
