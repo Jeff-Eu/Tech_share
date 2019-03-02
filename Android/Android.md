@@ -43,3 +43,5 @@
         - 一開始gradle設定我是照這篇[Integrate the Facebook API with Android](https://www.sitepoint.com/integrating-the-facebook-api-with-android/)，但寫code的地方這篇教的太複雜，不太推。
         * 產生release apk時，也需要用release的 key store去產生新的hash key，將hash key新增到facebook developer console的 Key Hashes 裡面，產生hash key的解法，[可參考這篇用coding印出的方法](https://stackoverflow.com/a/9600642/1613961)，會比較快。
 * [Use enhanced for loop syntax](https://developer.android.com/training/articles/perf-tips#Loops)
+* [Android Material Design working with Tabs](https://www.androidhive.info/2015/09/android-material-design-working-with-tabs/)
+* [Android Sliding Menu using Navigation Drawer](https://www.androidhive.info/2013/11/android-sliding-menu-using-navigation-drawer/)
