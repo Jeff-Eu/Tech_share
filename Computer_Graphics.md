@@ -17,3 +17,12 @@
 			* http://blogs.sitepointstatic.com/examples/tech/canvas-curves/bezier-curve.html
 		* Restricting some conditions for more beautiful curve
 			* https://github.com/PaoloConte/smooth-line-chart/blob/master/SmoothChartSample/src/org/paoloconte/smoothchart/SmoothLineChart.java
+
+	* [Implement] Android
+		* Implement curve through points
+			* Smooth line chart
+				* https://github.com/PaoloConte/smooth-line-chart
+				* https://github.com/PaoloConte/smooth-line-chart/blob/master/SmoothChartSample/src/org/paoloconte/smoothchart/SmoothLineChart.java
+
+		* Freehand - Vector drawing app
+			* https://github.com/CalHinshaw/Freehand
