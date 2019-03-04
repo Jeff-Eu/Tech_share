@@ -1,0 +1,10 @@
+* [Tree-Think] - Filter of ListView
+	v When onNotifyChanged is called, what function is called ? What overridden api should I implement ? 
+	o Use a view-model List (called vList) passing to my adapter, the vList will be filtered from the dataList.
+		o [Methods]
+			o [1] One way binding from dataList to vList. When new data is added from dataList, vList is also added if needed.
+				o vList must keep persistent in memory
+				x Study the two way binding in the C#
+			o [2] No binding. Only when needing to show ListView, the vList will be reset and re-created from dataList (selected!)
+	* [Conclude] Use method 2
+		* Add a boolean variable to check for update
