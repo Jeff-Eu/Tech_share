@@ -45,3 +45,6 @@
 * [Use enhanced for loop syntax](https://developer.android.com/training/articles/perf-tips#Loops)
 * [Android Material Design working with Tabs](https://www.androidhive.info/2015/09/android-material-design-working-with-tabs/)
 * [Android Sliding Menu using Navigation Drawer](https://www.androidhive.info/2013/11/android-sliding-menu-using-navigation-drawer/)
+
+* Tool Windows - Device File Explorer
+    * sdcard/Android/data/yourPackageName
