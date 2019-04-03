@@ -11,3 +11,6 @@ You can check them out as local branches with:\
 * vi 模式下指令:
 	* `:x`
 	* Reference: http://www.lagmonster.org/docs/vi.html
+
+* 回到merge/rebase之前的狀態
+	*  git reset ORIG_HEAD
