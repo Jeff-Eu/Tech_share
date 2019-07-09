@@ -48,3 +48,20 @@
 
 * Tool Windows - Device File Explorer
     * sdcard/Android/data/yourPackageName
+
+* Check Webview version:
+
+```java
+PackageManager pm = getPackageManager();
+try {
+    PackageInfo pi = pm.getPackageInfo("com.google.android.webview", 0);
+    Log.d(TAG, "version name: " + pi.versionName);
+//			Log.d(TAG, "version code: " + pi.versionCode);
+    long longVersionCode= PackageInfoCompat.getLongVersionCode(pi);
+    int versionCode = (int) longVersionCode; // avoid huge version numbers and you will be ok
+    Log.d(TAG, "version code: " + versionCode);
+
+} catch (PackageManager.NameNotFoundException e) {
+    Log.e(TAG, "Android System WebView is not found");
+}
+```
