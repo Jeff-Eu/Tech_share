@@ -54,6 +54,7 @@
 ```java
 PackageManager pm = getPackageManager();
 try {
+    // PackageInfo pi = pm.getPackageInfo("com.android.webview", 0);
     PackageInfo pi = pm.getPackageInfo("com.google.android.webview", 0);
     Log.d(TAG, "version name: " + pi.versionName);
 //			Log.d(TAG, "version code: " + pi.versionCode);
