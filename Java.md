@@ -65,3 +65,16 @@
         }
     }
 ```
+
+* Java IO
+    * Reader
+        * BufferedReader
+        * InputStreamReader
+            * FileReader
+
+    * InputStream
+        * FilterInputStream
+            * InflaterInputStream
+                * GZIPInputStream
+            * DataInputStream o- DataInput
+            * BufferedInputStream
