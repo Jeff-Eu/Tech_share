@@ -48,6 +48,22 @@
 
 * Tool Windows - Device File Explorer
     * sdcard/Android/data/yourPackageName
+	* Build variants
+	    * [Tutorial from Udacity](https://classroom.udacity.com/courses/ud867/lessons/4020658782/concepts/43254185720923)
 
-* Build variants
-    * [Tutorial from Udacity](https://classroom.udacity.com/courses/ud867/lessons/4020658782/concepts/43254185720923)
+* Check Webview version:
+
+```java
+PackageManager pm = getPackageManager();
+try {
+    // PackageInfo pi = pm.getPackageInfo("com.android.webview", 0);
+    PackageInfo pi = pm.getPackageInfo("com.google.android.webview", 0);
+    Log.d(TAG, "version name: " + pi.versionName);
+//			Log.d(TAG, "version code: " + pi.versionCode);
+    long longVersionCode= PackageInfoCompat.getLongVersionCode(pi);
+    int versionCode = (int) longVersionCode; // avoid huge version numbers and you will be ok
+    Log.d(TAG, "version code: " + versionCode);
+
+} catch (PackageManager.NameNotFoundException e) {
+    Log.e(TAG, "Android System WebView is not found");
+}
