@@ -78,3 +78,4 @@
                 * GZIPInputStream
             * DataInputStream o- DataInput
             * BufferedInputStream
+        * FileInputStream
