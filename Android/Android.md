@@ -48,3 +48,6 @@
 
 * Tool Windows - Device File Explorer
     * sdcard/Android/data/yourPackageName
+
+* Build variants
+    * [Tutorial from Udacity](https://classroom.udacity.com/courses/ud867/lessons/4020658782/concepts/43254185720923)
