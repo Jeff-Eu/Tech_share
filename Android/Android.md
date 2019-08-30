@@ -67,3 +67,15 @@ try {
 } catch (PackageManager.NameNotFoundException e) {
     Log.e(TAG, "Android System WebView is not found");
 }
+
+* publish 更新程序:
+    * 在 Android studio
+        * 先更新 version code
+        * 選擇完 build variants之後，再 build signed apk
+            * [待研究] 如果直接選 build signed apk是否就不用再選 build variants?
+
+    * 在 Play Console網頁
+        * 先選擇 Release management
+        * 選擇 New Release
+        * 將 Android 的release的 free跟 paid 資料夾內的apk複製到 Console網頁的upload頁面
+            * [注意] 如果Android studio 做完build signed apk後只過了短暫時間又手動再build signed apk一次，那 release的 free跟 paid 資料夾內的apk並不會被更新到，這是 可能是Android Studio的bug，必須要先將該檔案移除後再重新build才會成功產生新的apk
