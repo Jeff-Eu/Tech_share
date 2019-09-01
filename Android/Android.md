@@ -67,7 +67,7 @@ try {
 } catch (PackageManager.NameNotFoundException e) {
     Log.e(TAG, "Android System WebView is not found");
 }
-
+```
 * publish 更新程序:
     * 在 Android studio
         * 先更新 version code
@@ -79,3 +79,24 @@ try {
         * 選擇 New Release
         * 將 Android 的release的 free跟 paid 資料夾內的apk複製到 Console網頁的upload頁面
             * [注意] 如果Android studio 做完build signed apk後只過了短暫時間又手動再build signed apk一次，那 release的 free跟 paid 資料夾內的apk並不會被更新到，這是 可能是Android Studio的bug，必須要先將該檔案移除後再重新build才會成功產生新的apk
+
+* searchView
+    * as a MenuItem
+        * https://youtu.be/9OWmnYPX1uc?t=92
+    * searchable config
+        * https://youtu.be/9OWmnYPX1uc?t=156
+    * how to change android SearchView text
+        * https://stackoverflow.com/questions/14426769/how-to-change-android-searchview-text
+    * How do I open the SearchView programmatically?
+        * https://stackoverflow.com/questions/14235677/how-do-i-open-the-searchview-programmatically/14235987#14235987
+
+* Custom ActionBar
+    * https://stackoverflow.com/questions/27670684/how-to-set-a-custom-view-in-actionbar-in-android
+    * https://www.tutorialspoint.com/how-to-create-custom-actionbar-in-android
+    * https://www.journaldev.com/9952/android-custom-action-bar-example-tutorial
+
+* Getting ActionBar Title TextView with AppCompat v7 r21
+    * https://stackoverflow.com/questions/26455595/getting-actionbar-title-textview-with-appcompat-v7-r21
+
+* Instance State:
+	* https://www.intertech.com/Blog/saving-and-retrieving-android-instance-state-part-2/
