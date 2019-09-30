@@ -100,4 +100,3 @@ try {
 
 * Instance State:
 	* https://www.intertech.com/Blog/saving-and-retrieving-android-instance-state-part-2/
-    
