@@ -14,6 +14,13 @@
 		0        0        1 ]
 	```
 
+* Notice the method below, the first parameter is the destination RectF, not the source RectF.\
+Besides, the destination RectF should be initialized first.
+	```java
+	// Matrix's method
+	mapRect(RectF dst, RectF src)
+	```
+
 * Get Scale (Assume that the scale value is larger than zero)
 	```java
 		// https://math.stackexchange.com/questions/13150/extracting-rotation-scale-values-from-2d-transformation-matrix/13165
