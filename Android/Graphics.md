@@ -8,78 +8,78 @@
 
 ## Matrix
 * Transformation matrix
-```
-[ sx*cosΘ  −sx*sinΘ  tx
-  sy*sinΘ   sy*cosΘ  ty
-    0        0        1 ]
-```
+	```
+	[ sx*cosΘ  −sx*sinΘ  tx
+	  sy*sinΘ   sy*cosΘ  ty
+		0        0        1 ]
+	```
 
 * Get Scale (Assume that the scale value is larger than zero)
-```java
-	// https://math.stackexchange.com/questions/13150/extracting-rotation-scale-values-from-2d-transformation-matrix/13165
-	// https://math.stackexchange.com/questions/237369/given-this-transformation-matrix-how-do-i-decompose-it-into-translation-rotati
-	/* todo: Here sx, sy are both larger than 0.
-	 * In the future we need to take negative values of sx, sy into consideration.
-	 */
-	public static float[] getScaleVector(Matrix matrix) {
-		float sx, sy;
-		float[] f = new float[9];
-		matrix.getValues(f);
-		sx = (float) Math.hypot(f[0], f[1]);
-		sy = (float) Math.hypot(f[3], f[4]);
+	```java
+		// https://math.stackexchange.com/questions/13150/extracting-rotation-scale-values-from-2d-transformation-matrix/13165
+		// https://math.stackexchange.com/questions/237369/given-this-transformation-matrix-how-do-i-decompose-it-into-translation-rotati
+		/* todo: Here sx, sy are both larger than 0.
+		* In the future we need to take negative values of sx, sy into consideration.
+		*/
+		public static float[] getScaleVector(Matrix matrix) {
+			float sx, sy;
+			float[] f = new float[9];
+			matrix.getValues(f);
+			sx = (float) Math.hypot(f[0], f[1]);
+			sy = (float) Math.hypot(f[3], f[4]);
 
-		// https://stackoverflow.com/questions/3160347/java-how-initialize-an-array-in-java-in-one-line
-		return new float[]{sx, sy};
-	}
-```
+			// https://stackoverflow.com/questions/3160347/java-how-initialize-an-array-in-java-in-one-line
+			return new float[]{sx, sy};
+		}
+	```
 
 * Get Rotation
-```java
-	//	[ sx*cosΘ  −sx*sinΘ  tx        [ 0a  1b  2c
-	//    sy*sinΘ   sy*cosΘ  ty    ==    3d  4e  5f
-	//     0         0        1 ]        6g  7h  8i ]
-	//
-	//	 Premise: The scale value must be >= zero
-	public static double getRotationDegree(Matrix matrix) {
+	```java
+		//	[ sx*cosΘ  −sx*sinΘ  tx        [ 0a  1b  2c
+		//    sy*sinΘ   sy*cosΘ  ty    ==    3d  4e  5f
+		//     0         0        1 ]        6g  7h  8i ]
+		//
+		//	 Premise: The scale value must be >= zero
+		public static double getRotationDegree(Matrix matrix) {
 
-		final double TO_DEGREE = 180 / Math.PI;
-		float[] f = new float[9];
-		matrix.getValues(f);
+			final double TO_DEGREE = 180 / Math.PI;
+			float[] f = new float[9];
+			matrix.getValues(f);
 
-		// atan() is between pi/2 and -pi/2
-		double radian;
+			// atan() is between pi/2 and -pi/2
+			double radian;
 
-		if (f[4] != 0)
-			// tanΘ == -b/a == d/e
-			radian = Math.atan(f[3] / f[4]);
-		else // Θ is pi/2 or -pi/2
-			if (f[3] > 0)
-				return 90;
-			else
-				return -90;
+			if (f[4] != 0)
+				// tanΘ == -b/a == d/e
+				radian = Math.atan(f[3] / f[4]);
+			else // Θ is pi/2 or -pi/2
+				if (f[3] > 0)
+					return 90;
+				else
+					return -90;
 
-		if (f[3] == 0)
-			if (f[0] > 0)
-				return 0;
-			else
-				return 180;
-		/*
-		 * Please see tan() diagram
-		 * e.g. https://www.analyzemath.com/Inverse-Trigonometric-Functions/Arctan.html
-		 * */
-		if (radian > 0) { // quadrant I, III
-			if (f[0] > 0) // I
-				return radian * TO_DEGREE;
-			else // quadrant III
-				return radian * TO_DEGREE - Math.PI;
-		} else { // radian < 0. quadrant II, IV
-			if (f[0] > 0) // IV
-				return radian * TO_DEGREE;
-			else // II
-				return radian * TO_DEGREE + Math.PI;
+			if (f[3] == 0)
+				if (f[0] > 0)
+					return 0;
+				else
+					return 180;
+			/*
+			* Please see tan() diagram
+			* e.g. https://www.analyzemath.com/Inverse-Trigonometric-Functions/Arctan.html
+			* */
+			if (radian > 0) { // quadrant I, III
+				if (f[0] > 0) // I
+					return radian * TO_DEGREE;
+				else // quadrant III
+					return radian * TO_DEGREE - Math.PI;
+			} else { // radian < 0. quadrant II, IV
+				if (f[0] > 0) // IV
+					return radian * TO_DEGREE;
+				else // II
+					return radian * TO_DEGREE + Math.PI;
+			}
 		}
-	}
-```
+	```
 
 * Rotation unit is `degree` instead of `radian`. There are two types of transformation matrix, preXXX and postXXX. E.g.,
 	```java
