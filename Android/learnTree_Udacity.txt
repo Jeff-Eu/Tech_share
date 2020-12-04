@@ -14,4 +14,4 @@
             * Translucent activities
             * Single Top / Single Task
             * ViewModels
-    v 10. ~ 11.
+    v 10. ~ 12.
