@@ -1,0 +1,17 @@
+
+
+
+* Lesseon 4: Activity & Fragment Lifecycle
+    v 1. ~ 8.
+    * 9. Activity Lifecycle States and Callbacks Summary
+        # onStop: Stop logic that updates the UI. This should not be running when the activity is off-screen; it's a waste of resources. ==> 注意不會 crash
+        ? Fragment Lifecycle (=> the next cheet sheets may solve)
+        * Lifecycle Cheat Sheets
+            # from https://github.com/JoseAlcerreca/android-lifecycles
+            v Single activity
+            * Multiple activities
+            * Fragments
+            * Translucent activities
+            * Single Top / Single Task
+            * ViewModels
+    v 10. ~ 11.

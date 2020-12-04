@@ -1,4 +1,4 @@
-# [Android Questions](https://github.com/derekargueta/Android-Interview-Questions)
+# [Android](https://github.com/derekargueta/Android-Interview-Questions)
 ## Core Java
 * Explain object serialization and how to implement it in Java\
 	Ans: [solution](https://www.tutorialspoint.com/java/java_serialization.htm)
@@ -49,7 +49,7 @@ For Activity, we just need to mention in Manifest but for fragment its not requi
 		```
 		* 小記，
 		[sdk 28 後的改變](https://stackoverflow.com/a/49230811/1613961) :\
-		其實 onSaveInstance() 能盡量在invisible(onStop後)呼叫最好，因為這是app最常待的狀態，所以到了 sdk 28以後，若app被系統刪掉還可以記錄 state的話，那app就能獲取更多資訊了，這是一個技術突破。
+		看到上面程式的 onSaveInstance 演進，感覺 Android 發展的目標是要讓 onSaveInstance() 能盡量往後推愈接近 Destroyed state 來呼叫愈好(像是onStop 後的invisible)，這代表在 onSaveInstance 之前的狀態都能被 Android 記錄起來，隨著版本演進，能記錄到愈後面的狀態了，這是一個技術突破。若app被系統刪掉還可以記錄 state的話，那app就能獲取更多資訊。
 
 		onRestoreInstanceState() 呼叫時機:
 		```
