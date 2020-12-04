@@ -94,3 +94,31 @@ taskObservable.subscribe(new Observer<Task>() {
 
 ### Backpressure Strategies for Hot sources
 There's a number of backpressure operators you can apply to Flowables to implement different buffering strategies.
+
+```java
+Flowable<Integer> flowable = Flowable.range(0, 1000000);
+
+flowable.onBackpressureBuffer()
+        .observeOn(Schedulers.computation())
+        .subscribe(new FlowableSubscriber<Integer>() {
+            @Override
+            public void onSubscribe(Subscription s) {
+
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+                Log.d(TAG, "onNext: " + integer);
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                Log.e(TAG, "onError: ", t);
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
+```
