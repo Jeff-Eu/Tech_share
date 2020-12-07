@@ -1,0 +1,10 @@
+# L5_App Architecture (UI Layer)
+
+* 5. What is Architecture
+    - [Code Sample - Android Architecture Blueprints](https://github.com/android/architecture-samples)
+            - Blueprints v1 had a collection of samples that are not maintained anymore, but can still be useful. [See all project branches](https://github.com/android/architecture-samples/branches).
+    - Talk - Android Jetpack: what's new in Architecture Components (Google I/O '18)
+    - Talk - Droidcon NYC 2016 - A Journey Through MV Wonderland
+    - Blog Post - Android Architecture Patterns Part 2: Model-View-Presenter
+    - Documentation - Guide to App Architecture
+Blog Post - Android and Architecture

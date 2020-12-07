@@ -1,9 +1,31 @@
 # Lesseon 4: Activity & Fragment Lifecycle
 
-* 9. Activity Lifecycle States and Callbacks Summary 
-    * 這節算重要，這節的文章也有稍微提一下Fragment的 Lifecycle
+* 9. Activity Lifecycle States and Callbacks Summary (這節重要!也有講義)
+    * from https://classroom.udacity.com/courses/ud9012/lessons/e487c600-ed68-4576-a35a-12f211cf032e/concepts/4c1503f9-2de5-45ea-88ae-2138b0482ecc
     * Activity跟Fragment 有共同的states，但是callbacks不一樣
-    # onStop: Stop logic that updates the UI. This should not be running when the activity is off-screen; it's a waste of resources. ==> 注意不會 crash
+    * onStop: Stop logic that updates the UI. This should not be running when the activity is off-screen; it's a waste of resources. ==> 注意不會 crash
+    
+    * Important Fragment Callbacks to Implement
+        * 請同時也參考這連結的講解圖片，重要！
+            * https://medium.com/androiddevelopers/the-android-lifecycle-cheat-sheet-part-iii-fragments-afc87d4f37fd
+
+        * onCreate: Similar to the Activity’s onCreate callback. This is when the fragment is created. This will only get called once. Here you should:
+            * Initialize anything essential for you fragment.
+            * DO NOT inflate XML, do that in onCreateView, when the system is first drawing the fragment, NOT reference the activity, it is still being created. Do this in onActivityCreated (reference activity).
+
+        * onCreateView: This is called between onCreate and onActivityCreated. when the system will draw the fragment for the first time or when the fragment becomes visible again. You must return a view in this callback if your fragment has a UI. Here you should:
+            * Create your views by inflating your XML.
+
+        * onActivityCreated:
+            * Execute any code that requires an activity instance
+
+        * onDestroyView: Unlike activities, fragment views are destroyed every time they go off screen. This is called after the view is no longer visible.
+            * Do not refer to views in this callback, since they are destroyed
+
+        * onDestroy: Called when the Activity’s onDestroy is called.
+
+        * onDetach: Called when the association between the fragment and the activity is destroyed.
+
     * Lifecycle Cheat Sheets
         * from https://github.com/JoseAlcerreca/android-lifecycles
         v Single activity
