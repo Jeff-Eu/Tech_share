@@ -1,10 +1,21 @@
 # L5_App Architecture (UI Layer)
 
 * 5. What is Architecture
+    * 每一次 Architecture Pattern 都有它的優缺點，MVVM也是。
     - [Code Sample - Android Architecture Blueprints](https://github.com/android/architecture-samples)
-            - Blueprints v1 had a collection of samples that are not maintained anymore, but can still be useful. [See all project branches](https://github.com/android/architecture-samples/branches).
+        - 同一個ap用各種Architecture Pattern來實作，值得研究：Blueprints v1 had a collection of samples that are not maintained anymore, but can still be useful. [See all project branches](https://github.com/android/architecture-samples/branches).
     - Talk - Android Jetpack: what's new in Architecture Components (Google I/O '18)
     - Talk - Droidcon NYC 2016 - A Journey Through MV Wonderland
     - Blog Post - Android Architecture Patterns Part 2: Model-View-Presenter
     - Documentation - Guide to App Architecture
 Blog Post - Android and Architecture
+
+* 6. Our App Architecture
+    * UI-Controller & ViewModel & LiveData
+        * UI controller is the word that I'm using to describe what activities and fragments are.
+        * UI controller is responsible for any user interface related tasks
+
+* 7. ViewModel
+    * 為了解決像rotate會需要Fragment跟Activity去重建的狀況，會利用 onSaveInstanceState寫在Fragment中，如果裡面做很多複雜的事，這種寫法會變很複雜，這時候可以把這些邏輯寫進ViewModel
+    * The ViewModel survives configuration changes.
+    * Unlike the onSaveInstanceState bundle, the ViewModel has no restrictions on size!
