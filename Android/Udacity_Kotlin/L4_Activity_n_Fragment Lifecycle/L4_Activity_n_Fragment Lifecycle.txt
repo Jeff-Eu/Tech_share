@@ -1,6 +1,8 @@
 # Lesseon 4: Activity & Fragment Lifecycle
 
-* 9. Activity Lifecycle States and Callbacks Summary (重要)
+* 9. Activity Lifecycle States and Callbacks Summary 
+    * 這節算重要，這節的文章也有稍微提一下Fragment的 Lifecycle
+    * Activity跟Fragment 有共同的states，但是callbacks不一樣
     # onStop: Stop logic that updates the UI. This should not be running when the activity is off-screen; it's a waste of resources. ==> 注意不會 crash
     * Lifecycle Cheat Sheets
         * from https://github.com/JoseAlcerreca/android-lifecycles
