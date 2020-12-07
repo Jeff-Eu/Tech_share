@@ -2,15 +2,14 @@
 
 * 9. Activity Lifecycle States and Callbacks Summary (重要)
     # onStop: Stop logic that updates the UI. This should not be running when the activity is off-screen; it's a waste of resources. ==> 注意不會 crash
-    ? Fragment Lifecycle (=> the next cheet sheets may solve)
     * Lifecycle Cheat Sheets
         * from https://github.com/JoseAlcerreca/android-lifecycles
         v Single activity
-        * Multiple activities
-        * Fragments
-        * Translucent activities
-        * Single Top / Single Task
-        * ViewModels
+        - Multiple activities
+        - Fragments
+        - Translucent activities
+        - Single Top / Single Task
+        - ViewModels
         
 * 13. Introduction to the Lifecycle Library
     * [Handling Lifecycles with Lifecycle-Aware Components](https://developer.android.com/topic/libraries/architecture/lifecycle)
@@ -40,7 +39,7 @@
         ```
 
     3. Pass in 'this' MainActivity's lifecycle so that it is observed:
-        ```
+        ```kotlin
         dessertTimer = DessertTimer(this.lifecycle)
         ```
 * 16. Process Shutdown Demo
@@ -52,12 +51,6 @@
         ```
         刪除完點下最近使用app會發現它還在清單之中，但是實際點開它會發現它重新被 create了(參考 9 的 lifecycle cheat sheet)
 
-* 17. Exercise: onSaveInstanceState
-    ? 下面這三句話的意思應該是指，當OS要準備shutting down你的app時，才會將你寫在 onSaveInstanceState的資訊寫入
-    00:29 The system doesn't wait to save the data till
-    00:31 later because when the OS is actually shutting down your app,
-    00:34 it's pretty streamed already.
-    
+* 17. Exercise: onSaveInstanceState  
     * 儲存在 onSaveInstanceState 的bundle資訊應該要遠小於 100KB, or you'll risk crashing your app with the transaction too large exception.
-    
     * Retrieve and use the bundled data in onCreate or onRestoreInstanceState，但大部分時候用 onCreate 裡的 bundle 就好；onRestoreInstanceState會在 onStart後面呼叫，所以只有需要在 onStart後去使用 bundle時再覆寫利用 onRestoreInstanceState即可。
