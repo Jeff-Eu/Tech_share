@@ -19,3 +19,32 @@ Blog Post - Android and Architecture
     * 為了解決像rotate會需要Fragment跟Activity去重建的狀況，會利用 onSaveInstanceState寫在Fragment中，如果裡面做很多複雜的事，這種寫法會變很複雜，這時候可以把這些邏輯寫進ViewModel
     * The ViewModel survives configuration changes.
     * Unlike the onSaveInstanceState bundle, the ViewModel has no restrictions on size!
+
+* 8. Exercise: Create the GameViewModel (重要)
+    * 將 Fragment 與 ViewModel 做關聯
+        * You never construct ViewModels yourself.
+        * If you did, you'd end up constructing a ViewModel every time the fragment was recreated,
+        * which wouldn't solve our rotation issue.
+        * Instead the lifecycle library creates the ViewModel for you.
+    * 在 Fragment 的 onCreateView 裡面，創建 ViewModel 並與 Fragment 作關聯
+        ```kotlin
+        viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
+        ```
+        * When ViewModelProviders is called again,
+        * it'll return a reference to
+        * a pre-existed GameViewModel associated with this UI controller.
+    * 
+        ```kotlin
+        class GameViewModel : ViewModel() {
+
+            init {
+                Log.i("GameViewModel", "GameViewModel created!")
+            }
+            // 這會在 Fragment 被 destroy 的前後，就會被呼叫 (目前還不曉得前後順序)
+            override fun onCleared() {
+                super.onCleared()
+                Log.i("GameViewModel", "GameViewModel destroyed!")
+            }
+        }
+        ```
+    *  Run your code, and make sure you see the expected logs. Rotate your device a few times and notice how the `GameViewModel` does not get created again.

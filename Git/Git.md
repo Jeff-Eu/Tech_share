@@ -18,7 +18,7 @@ You can check them out as local branches with:\
 
 * 如下圖 How to effectively merge a range of commits on branch-test (F) upon the top of branch-master?
 
-![merge range](Git\imgs\merge_range.jpg)
+	![merge range](\imgs\merge_range.jpg)
 
 如果想將test的range of commits (F) 合併到 master 的最上面，因為master在合併進test後有再修改過，若直接在master上使用 cherry pick from (F)，可能會導致要處理多次conflicts的情形(每筆commit的cherry pick可能會各別遇到conflict)，如果只想處理一次conflict，該怎麼做？
 
