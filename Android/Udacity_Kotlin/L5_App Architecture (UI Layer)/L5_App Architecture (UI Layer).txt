@@ -48,3 +48,20 @@ Blog Post - Android and Architecture
         }
         ```
     *  Run your code, and make sure you see the expected logs. Rotate your device a few times and notice how the `GameViewModel` does not get created again.
+
+* 9. What Belongs in the GameViewModel? 
+    * What should be moved to the ViewModel? Keep in mind:
+        * The ViewModel is a stable place to store the data to display in the associated UI controller.
+        * The Fragment draws the data on screen and captures input events. It should not decide what to display on screen or process what happens during an input event.
+        * The ViewModel never contains references to activities, fragments, or views.
+
+* 10. Exercise: Populate the GameViewModel
+    * 
+        * The viewModel should never contain references to activities, fragments, or views.
+        * Now, you might be wondering about the reasoning for that last rule.
+        * Remember that a big reason for us using viewModels is that they survive configuration changes.
+        * By nature, activities, fragments, and views don't survive configuration changes.
+    * 
+        * Nav controller is found by passing in a viewer fragment,
+        * which are things that we do not want in the viewModel.
+        * So basically, any navigation that you do is going to need to be done in the fragment.
