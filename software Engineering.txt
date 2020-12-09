@@ -1,0 +1,4 @@
+software Engineering
+
+* The iterative nature of Agile development may lead to a frequent refactoring if the full scope of the system is not considered in the intial architecture and design. Without this refactoring, the system can suffer from a reduction in overall quality. This becomes more pronounced in larger-scale implementations, or with systems that include a high level of integration.
+	* from https://www.seguetech.com/waterfall-vs-agile-methodology/

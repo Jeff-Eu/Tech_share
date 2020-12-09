@@ -1,0 +1,12 @@
+ubuntu
+
+* commands
+	* sudo apt install gparted
+	* df -H
+	* sudo rm -Rf {path}
+	* vi ~/.bashrc
+	* pwd  // current location
+	* sudo vi /etc/apt/sources.list
+	* sudo sed -i s:/security.ubuntu.com:/free.nchc.org.tw:g /etc/apt/sources.list
+* application:
+	* disk management: gparted

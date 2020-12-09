@@ -1,0 +1,54 @@
+
+
+links:
+	* WebRTC Multiparty Video Alternatives, and Why SFU is the Winning Model
+		* https://bloggeek.me/webrtc-multiparty-video-alternatives/
+glossary:
+	* Mesh
+		* https://webrtcglossary.com/mesh/
+	* MCU (Multipoint Conferencing Unit): used for mixing
+		* https://webrtcglossary.com/mcu/
+		* Mixing
+			* https://webrtcglossary.com/mixing/
+	* SFU (Selective Forwarding Unit): used for routing
+		* https://webrtcglossary.com/sfu/
+		* Simulcast
+			* https://webrtcglossary.com/simulcast/
+		* Routing
+			* https://webrtcglossary.com/routing/
+
+build procedure:
+	* pull code
+		* because of dependency, create a webrtc folder and then "fetch webrtc" in the folder
+		* create the other folder "owt_native_android" and then create .gclient file from the github page, https://github.com/open-webrtc-toolkit/owt-client-native
+
+tmp:
+	* Add depot_tools on C:\depot_tools
+		* from https://commondatastorage.googleapis.com/chrome-infra-docs/flat/depot_tools/docs/html/depot_tools_tutorial.html#_setting_up
+		* remove it after WebRTC is buildable
+	* From Ben: 
+		* Google 做 WebRTC 但沒做 Signaling
+		* Intel 修改 WebRTC 做兩件事,
+			1. 實作 Signaling 
+			2. 包成 API 給各平台使用
+		* transcode (video/autio) = encode & decode
+	* VP8 uses three types of reference frames for inter prediction: the
+	“last frame”, a “golden frame” (one frame worth of decompressed
+	data from the arbitrarily distant past) and an “alternate reference
+	frame.”
+
+	VP8 vs H264:
+	"last frame" <-->  I Frame
+	"golden frame" <--> P frame
+	"alternative frame" <--> B Frame
+
+	https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/37073.pdf
+
+	有個做法是.. 你把收到的 bitstream dump 下來
+	(可能要改webrtc source code.. 在webrtc 餵資料給decoder之前, dump下來)
+	然後再用bitstreams analyzer
+	像是 streameye 之類的工具去做碼流分析
+	看是不是 streameye decode就破圖了..   如果是這樣 那就是encode那邊就有問題
+	Seen by Aaron Chang at 10:08 AM
+	如果不是.. 那就可能是 decoder 那邊有問題
+	可能是firmware那邊的問題 之類的  就再深入去查
