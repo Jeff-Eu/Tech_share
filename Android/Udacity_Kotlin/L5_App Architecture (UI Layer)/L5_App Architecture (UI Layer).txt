@@ -121,3 +121,32 @@ Blog Post - Android and Architecture
         }
     })
     ```
+
+* 21. Exercise: Add CountDownTimer
+
+    ```kotlin
+    timer = object : CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
+
+        override fun onTick(millisUntilFinished: Long) {
+            // TODO implement what should happen each tick of the timer
+        }
+
+        override fun onFinish() {
+            // TODO implement what should happen when the timer finishes
+        }
+    }
+
+    timer.start()
+    ```
+
+    * Cancel the timer in onCleared:
+        * To avoid memory leaks, you should always cancel a CountDownTimer if you no longer need it. To do that, you can call this in ViewModel:
+        ```kotlin
+        override fun onCleared() {
+            super.onCleared()
+            timer.cancel()
+        }
+        ```
+
+* 22. Exercise: Add a ViewModelFactory
+        * 請參考程式碼裡 score package 裡面的檔案，是如何創建有參數的 ViewModel，但這需要用配合 ViewModelProvider.Factory 以及 ViewModelProvider，看起來挺麻煩的，這一切的Android設計都是為了LifeCycle！
