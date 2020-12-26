@@ -79,3 +79,6 @@
             * DataInputStream o- DataInput
             * BufferedInputStream
         * FileInputStream
+
+# 語法:
+    * 如果想在一個java檔裡寫多個class都在最外層，最多就只能留一個public class。
