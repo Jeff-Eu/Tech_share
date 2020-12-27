@@ -115,3 +115,16 @@
             }
         })
         ```
+
+* 13. Exercise: Add DataBinding to the Adapter
+    * 新技能，在 layout xml 的 parent裡按 Alt-Enter，就可選擇變成 data-binding 的 layout。
+    * Rebuild project 之後就能使用 binding object，如果還是不行，就 go to file, invalidate caches/restart.
+    * 新技能，在 4:38 介紹如何使用 Alt-Enter 將函式的參數 refactor成另外一種type。
+    * 注意下面程式的 binding parameter 前面加上 val，或是依需求可寫 var；這是class的constructor特有的寫法，能同時宣告 member variables；與 method 的參數不需要加 var/val 的寫法不同。
+        ```java kotlin
+        class ViewHolder private constructor(val binding: ListItemSleepNightBinding)
+                : RecyclerView.ViewHolder(binding.root) {
+            ...
+        }
+        ```
+    * 新技能，從 field 透過 Alt-Enter 變成 inline 呼叫，field就可以省略，同時也比較好理解code (只要inline不要太多層呼叫的話) 
