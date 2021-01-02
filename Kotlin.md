@@ -13,3 +13,6 @@
             println(adam)
             ```
     * `it`
+        * ...
+
+* data, class, object 差異

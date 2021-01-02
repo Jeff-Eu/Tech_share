@@ -128,3 +128,61 @@
         }
         ```
     * 新技能，從 field 透過 Alt-Enter 變成 inline 呼叫，field就可以省略，同時也比較好理解code (只要inline不要太多層呼叫的話) 
+
+* 14. Exercise: Add Binding Adapters
+    * 在 ViewHolder 的 class中，bind()函式被改寫如下
+        ```java kotlin
+        fun bind(item: SleepNight) {
+            binding.sleep = item // sleep 是 xml 中用 data 宣告的變數
+            binding.executePendingBindings() // 這看起來是要做 binding 的話必須加的，不知用處為何
+        }
+        ```
+    * 在 BindingUtils.kt 中，寫data轉換為view的函式，每個函式上面要加上 `@BindingAdapter(名稱)`
+    * 在 list_item_sleep_night.xml 中，就可以 bind資料了，例如
+        ```xml
+        <data>
+            <variable
+                name="sleep"
+                type="com.example.android.trackmysleepquality.database.SleepNight" />
+        </data>
+        <androidx.constraintlayout.widget.ConstraintLayout ...>
+            <ImageView
+                android:id="@+id/quality_image"
+                ...
+                app:sleepImage="@{sleep}"/>
+
+            <TextView
+                android:id="@+id/sleep_length"
+                ...
+                app:sleepDurationFormatted="@{sleep}"/>
+
+            <TextView
+                android:id="@+id/quality_string"
+                ...
+                app:sleepQualityString="@{sleep}"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        ```
+        xml中強制將原本TextView設定text或ImageView設定image的屬性都給蓋掉了，這種binding寫法看起來有點牽強阿！
+
+* 19. Interacting with List Items
+    * 講者說有很多方法可實作 RecyclerView 的 click listeners，各有優缺點，這裡將介紹其中一種，不一定總是最好的。
+
+* 20. Exercise: Implement a Click Listener
+    * 比較 exercise跟 solution的 branch，就知道 click listener是加何加進去，值得注意的是，這裡在 xml直接將 sleep object 傳進去 onClick的 function，不像以前寫 view的 click都只能在 fragment裡面去寫function而且只有 view當參數，而且這裡 xml中每個view都可以加 onClick，就都可以參照 sleep object。
+    * 回傳 Unit ，在 Kotlin 意思就是回傳 Void
+        ```java kotlin
+        val clickListener: (sleepId: Long) -> Unit
+        ```
+
+* 21. Exercise: Navigate on Click
+    * 這節改進的功能是在 click睡眠品質 icon後，進到 detail畫面，值得注意有用到下面這個陌生的code,
+        ```java kotlin
+        // 我發現寫成降也是可以的，不一定要用後面的 MediatorLiveData
+        //     private val night = database.getNightWithId(sleepNightKey)
+        private val night = MediatorLiveData<SleepNight>()
+        fun getNight() = night
+        init {
+            night.addSource(database.getNightWithId(sleepNightKey), night::setValue)
+        }
+        ```
+        這裡的 MediatorLiveData 可以在 [stackoverflow得到解說](https://stackoverflow.com/a/48828237/1613961)。
