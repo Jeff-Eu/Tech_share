@@ -3,3 +3,6 @@ Sublime
 * Delete to End: Ctrl + KK
 * Ctrl + Shift + [ to fold\
   Ctrl + Shift + ] to unfold
+
+Android Studio
+* ^O: Get methods for overriding
