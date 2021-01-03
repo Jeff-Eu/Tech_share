@@ -28,13 +28,13 @@
 
     * Lifecycle Cheat Sheets
         * from https://github.com/JoseAlcerreca/android-lifecycles
-        v Single activity
-        - Multiple activities
-        - Fragments
-        - Translucent activities
-        - Single Top / Single Task
-        - ViewModels
-        
+            * [done] Single activity
+            * Multiple activities
+            * Fragments
+            * Translucent activities
+            * Single Top / Single Task
+            * ViewModels
+            
 * 13. Introduction to the Lifecycle Library
     * [Handling Lifecycles with Lifecycle-Aware Components](https://developer.android.com/topic/libraries/architecture/lifecycle)
     
@@ -43,7 +43,7 @@
 
     1. Make DessertTimer a LifecycleObserver:
     In order to achieve this, DessertTimer should implement a LifecycleObserver, take in a Lifecycle as a parameter and establish observer relationship in init block.
-        ```kotlin
+        ```java kotlin
         class DessertTimer(lifecycle: Lifecycle) : LifecycleObserver {
             init {
                 lifecycle.addObserver(this)
