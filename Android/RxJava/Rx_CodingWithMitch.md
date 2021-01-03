@@ -119,37 +119,41 @@ taskObservable.subscribe(new Observer<Task>() {
 
     * Cold sources:
 
-        The objects emitted by the Observables are said to be emitted lazily. Meaning: The Observables begin emitting objects when the Observers want and at a rate suitable to the Observer.\
+        The objects emitted by the Observables are said to be emitted lazily. Meaning: The Observables begin emitting objects when the Observers want and at a rate suitable to the Observer.
 
-        The objects emitted by the Observables do not need to be buffered because the whole process is basically at the discretion of the Observer.\
+        The objects emitted by the Observables do not need to be buffered because the whole process is basically at the discretion of the Observer.
 
 ### Backpressure Strategies for Hot sources
 There's a number of backpressure operators you can apply to Flowables to implement different buffering strategies.
 
-```java
-Flowable<Integer> flowable = Flowable.range(0, 1000000);
+* Strategy 1: onBackpressureBuffer() for Hot sources
+    ```java
+    Flowable<Integer> flowable = Flowable.range(0, 1000000);
 
-flowable.onBackpressureBuffer()
-        .observeOn(Schedulers.computation())
-        .subscribe(new FlowableSubscriber<Integer>() {
-            @Override
-            public void onSubscribe(Subscription s) {
+    flowable.onBackpressureBuffer()
+            .observeOn(Schedulers.computation())
+            .subscribe(new FlowableSubscriber<Integer>() {
+                @Override
+                public void onSubscribe(Subscription s) {
 
-            }
+                }
 
-            @Override
-            public void onNext(Integer integer) {
-                Log.d(TAG, "onNext: " + integer);
-            }
+                @Override
+                public void onNext(Integer integer) {
+                    Log.d(TAG, "onNext: " + integer);
+                }
 
-            @Override
-            public void onError(Throwable t) {
-                Log.e(TAG, "onError: ", t);
-            }
+                @Override
+                public void onError(Throwable t) {
+                    Log.e(TAG, "onError: ", t);
+                }
 
-            @Override
-            public void onComplete() {
+                @Override
+                public void onComplete() {
 
-            }
-        });
-```
+                }
+            });
+    ```
+* [todo] [Other Strategies For Refs](https://github.com/ReactiveX/RxJava/wiki/Backpressure-(2.0))
+### Other
+* 剩下就是講Flowables and Observables互相轉換的方法，以及提供一些 References [todo]

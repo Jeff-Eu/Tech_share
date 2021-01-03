@@ -16,3 +16,18 @@
         * ...
 
 * data, class, object 差異
+
+* 函數的參數初始化 (跟 C#很像)
+    ```java kotlin
+    fun test(a: Int = 22, b: Int = 44) {
+        println("a: ${a}, b: ${b}")
+    }
+
+    test()
+    test(b = 33, a = 11) // 指定參數 a與 b的值，不一定要按照函式參數的先後順序
+
+    /* output:
+        a: 22, b: 44
+        a: 11, b: 33
+    */
+    ```
