@@ -27,14 +27,14 @@ Blog Post - Android and Architecture
         * which wouldn't solve our rotation issue.
         * Instead the lifecycle library creates the ViewModel for you.
     * 在 Fragment 的 onCreateView 裡面，創建 ViewModel 並與 Fragment 作關聯
-        ```kotlin
+        ```java kotlin
         viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
         ```
         * When ViewModelProviders is called again,
         * it'll return a reference to
         * a pre-existed GameViewModel associated with this UI controller.
     * 
-        ```kotlin
+        ```java kotlin
         class GameViewModel : ViewModel() {
 
             init {
@@ -62,7 +62,7 @@ Blog Post - Android and Architecture
         * Remember that a big reason for us using viewModels is that they survive configuration changes.
         * By nature, activities, fragments, and views don't survive configuration changes.
     * 
-        * Nav controller is found by passing in a viewer fragment,
+        * Nav controller is found by passing in a viewer fragment, (第74行，gameFinished的函式裡面)
         * which are things that we do not want in the viewModel.
         * So basically, any navigation that you do is going to need to be done in the fragment.
 
@@ -87,15 +87,15 @@ Blog Post - Android and Architecture
     * LiveData is an observable data holder class that is lifecycle-aware.
     * LiveData is UI data and kept in ViewModel.
     * example
-        ```kotlin
+        ```java kotlin
         // 1. 注意這LiveData可宣告成val，因為只有裡面的資料會改變
         // 2. Nullable
         val score = MutableLiveData<Int>()
         ```
 
 * 15. Lifecycle Awareness
-    * Remember back when you set up the observation connection in onCreateView?
-        ```kotlin
+    * Remember back when you set up the observation connection in onCreateView
+        ```java kotlin
         viewModel.word.observe(this, Observer { newWord ->
             binding.wordText.text = newWord
         })
@@ -104,14 +104,14 @@ Blog Post - Android and Architecture
 
 * 16. Exercise: Add LiveData Encapsulation to GameViewModel
     * 封裝ViewModel的一些properties讓UI-Controller(Fragment)無法set他們，使得程式更OOP
-        ```kotlin
+        ```java kotlin
         private val _score = MutableLiveData<Int>()
         val score: LiveData<Int>
             get() = _score
         ```
 
 * 18. Exercise: Add End Game event
-    ```kotlin
+    ```java kotlin
     // Sets up event listening to navigate the player when the game is finished
     viewModel.eventGameFinish.observe(this, Observer { isFinished ->
         if (isFinished) {
@@ -124,7 +124,7 @@ Blog Post - Android and Architecture
 
 * 21. Exercise: Add CountDownTimer
 
-    ```kotlin
+    ```java kotlin
     timer = object : CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
 
         override fun onTick(millisUntilFinished: Long) {
@@ -141,7 +141,7 @@ Blog Post - Android and Architecture
 
     * Cancel the timer in onCleared:
         * To avoid memory leaks, you should always cancel a CountDownTimer if you no longer need it. To do that, you can call this in ViewModel:
-        ```kotlin
+        ```java kotlin
         override fun onCleared() {
             super.onCleared()
             timer.cancel()
@@ -164,7 +164,7 @@ Blog Post - Android and Architecture
         * ref https://developer.android.com/topic/libraries/data-binding/observability
     * 承上，使用LiveData就不需要去學上面 DataBinding Libary裡面的 Observable系列的方法了
     * 如何使用LiveData的 DataBinding？在 GameFragment裡面的 onCreate()裡面
-        ```kotlin
+        ```java kotlin
         binding.gameViewModel = viewModel
         binding.setLifecycleOwner(this) // 主要就是要加這行
         ```
@@ -182,7 +182,7 @@ Blog Post - Android and Architecture
 
 * 25. Exercise: LiveData Map Transformation
     * Code in ViewModel
-        ```kotlin
+        ```java kotlin
         // The String version of the current time
         val currentTimeString = Transformations.map(_currentTime) { time ->
             DateUtils.formatElapsedTime(time)
@@ -194,7 +194,7 @@ Blog Post - Android and Architecture
 * 26. Optional Exercise: Adding the Buzzer
     * 這邊可以學到Kotlin的Enum class，看起來可以傳資料進去，並且之後撈出來使用，e.g.
         * 在ViewModel中:
-            ```kotlin
+            ```java kotlin
             private val CORRECT_BUZZ_PATTERN = longArrayOf(100, 100, 100, 100, 100, 100)
             private val PANIC_BUZZ_PATTERN = longArrayOf(0, 200)
             private val GAME_OVER_BUZZ_PATTERN = longArrayOf(0, 2000)
@@ -211,7 +211,7 @@ Blog Post - Android and Architecture
             ```
 
         * 在UI Controller中
-            ```kotlin
+            ```java kotlin
             // Buzzes when triggered with different buzz events
             viewModel.eventBuzz.observe(viewLifecycleOwner, Observer { buzzType ->
                 if (buzzType != GameViewModel.BuzzType.NO_BUZZ) {

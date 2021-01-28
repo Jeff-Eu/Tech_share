@@ -136,6 +136,7 @@
             3. Scope  - it just combines Job and dispatcher -- Imagine him to be a guy who helps the above two work together.
 
 * 15. 直接看程式碼，有太多 coroutine的語法
+    * 在 Step.05-Solution-Coroutines 的 SleepTrackerViewModel.kt 裡面
 
 * 16. Googler Interview: Florina Muntenescu
     * Room 最棒的優點：
