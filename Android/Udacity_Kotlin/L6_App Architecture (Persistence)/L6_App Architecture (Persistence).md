@@ -117,6 +117,8 @@
     * The callback code will run at some asynchronous time in the future. In addition, callbacks don't allow the use of some language features, such as exceptions. There is no way to signal an error from a long-running task with exceptions when coding in the callback style, as flow control has already left the function that registered to the callback.
     * Be aware that the suspend keyword does not specify this thread code runs on. Suspend functions may run on a background thread or the main thread.
     * Coroutine References
+        * 已看過的
+            * https://www.youtube.com/watch?v=rJ-cfoFCDAI
         * 在FB看到台灣人分享的自學心得
             * https://waynestalk.com/kotlin-coroutine-tutorial/?fbclid=IwAR1iV1e2BP5uj5IiY9Mk_R_z8o_yKCTKTvEPqgYZBMH9ul554bRl7WgEkkQ
         * https://codelabs.developers.google.com/codelabs/kotlin-coroutines/#0
