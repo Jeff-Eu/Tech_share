@@ -95,3 +95,7 @@
         }
     }
     ```
+
+* 14. Parcel and Parcelables
+    * [重要] The writeToParcel method writes all of the objects properties out to the parcel. The order of the parcel operations in the writeToParcel, createFromParcel, and the constructor must match.
+    * 利用 Kotlin Android Extension 來輕鬆實作 Parcelables 的寫法，就不用去手動維護個別屬性及順序的一致性 (影片 3:15 ~ 3:49)

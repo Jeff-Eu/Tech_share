@@ -1,3 +1,19 @@
+# Android Official Site
+* What's Intent?\
+Ans: An Intent is a messaging object you can use to request an action from another app component. There are 3 common use cases.
+	* Starting an activity
+	* Starting a service
+	* Delivering a broadcast
+		* A broadcast is a message that any app can receive. The system delivers various broadcasts for system events, such as when the system boots up or the device starts charging. You can deliver a broadcast to other apps by passing an Intent to sendBroadcast() or sendOrderedBroadcast().
+
+There are two types of intents:
+
+* __Explicit__ intents specify which application will satisfy the intent, by supplying either the target app's package name or a fully-qualified component class name. For example, you might start a new activity within your app in response to a user action, or start a service to download a file in the background.
+
+* __Implicit intents__ do not name a specific component, but instead declare a general action to perform, which allows a component from another app to handle it. For example, if you want to show the user a location on a map, you can use an implicit intent to request that another capable app show a specified location on a map.
+
+![](_imgs\1.png)
+
 # [Android](https://github.com/derekargueta/Android-Interview-Questions)
 ## Core Java
 * Explain object serialization and how to implement it in Java\
